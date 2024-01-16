@@ -12,8 +12,11 @@ const Dropdown = ({ items, onSelect }) => {
         <div>
             <ul>
                 {items.slice(0, visibleItems).map(item => (
-                    <li key={item.email} onClick={() => onSelect(item)}>
-                        {item.name}
+                    <li key={item.email} onClick={() => onSelect(item)} className='cursor-pointer'>
+                    <div className='flex justify-between'>
+                        <span>{item.name}</span>
+                        <span className='text-gray-500'>{item.email}</span>
+                    </div>
                     </li>
                 ))}
             </ul>
