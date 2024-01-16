@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Chip from './component/ChipComponent'; // Import Chip component
 import Dropdown from './component/Dropdown'; // Import Dropdown component
 import { data } from './data/data'; // Import the data array
+
+import "./App.css";
 
 const App = () => {
     const [allItems, setAllItems] = useState(data);
@@ -58,18 +61,24 @@ const App = () => {
     );
 
     return (
+        <>
+        <div className='heading'>
+            <h1>Pick Users</h1>
+        </div>
         <div className='container mx-auto'>
             <div className='flex w-full flex-wrap gap-2'>
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap pill-container">
                     {selectedItems.map(item => (
                         <Chip
                             key={item.email}
                             label={item.name}
+                            image={item.image_url}
                             onRemove={() => handleRemoveChip(item)}
                             className='bg-blue-500 text-white py-1 px-2 rounded-lg m-1 cursor-pointer'
                         />
                     ))}
                 </div>
+               
                 <div>
                     <input
                         type="text"
@@ -83,6 +92,7 @@ const App = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
